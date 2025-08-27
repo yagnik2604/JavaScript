@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>images</h2>
+    <ul id="images">
+      <li>
+        <img
+          width="200px"
+          id="dog"
+          src="https://images.pexels.com/photos/32460715/pexels-photo-32460715/free-photo-of-black-and-white-dog-in-riverside-landscape.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="dog"
+        />
+      </li>
+
+      <li>
+        <img
+          width="200px"
+          id="lizard"
+          src="https://images.pexels.com/photos/4060081/pexels-photo-4060081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="lizard"
+        />
+      </li>
+
+      <li>
+        <img
+          width="150px"
+          id="parrot"
+          src="https://images.pexels.com/photos/32285955/pexels-photo-32285955/free-photo-of-vibrant-green-parrot-perched-on-rock.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="parrot"
+        />
+      </li>
+
+      <li>
+        <a id="pexel" href="https://www.pexels.com/">pexel</a>
+      </li>
+    </ul>
+  </body>
+  <script>
+    //event type, timestamp, defaultprevented
+    //taget, toElement, srcElement, currentTarget,
+    //clientX, clientY, screenX, screenY,
+    // altkey, ctrKey, shiftkey, keycode
+
+
+
+    //  document.getElementById('dog').addEventListener('click', function(){
+    //     alert("dog clicked");
+    //  })
+
+    // document.getElementById("dog").addEventListener(
+    //   "click",
+    //   function (e) {
+    //     console.log(e);
+    //   },
+    //   false); // false is default no need to write but some place it required
+
+    //(1)---------------event propagation--------------------------------
+
+    // document.getElementById("images").addEventListener("click", function(e){
+    //        console.log("cliked inside the ul");
+    // }, false)
+
+    // document.getElementById("lizard").addEventListener("click", function(e){
+    //              console.log("lizard clicked")
+    //                 e.stopPropagation()  // is use to stop propagation
+    // }, false)
+
+    // this is called bubble events (when you click on lizard first console.log lizard cliked and then clicked inside the ul  )
+    // it work like bubble small to big (buttom to up)
+    // bubble event is achieve through false(default)
+
+    //(2)------------------event capturing-----------------------
+
+    //   document.getElementById("images").addEventListener("click", function(e){
+    //        console.log("cliked inside the ul");
+    // }, true)
+
+    // document.getElementById("lizard").addEventListener("click", function(e){
+    //              console.log("lizard clicked")
+
+    // }, true) // true parameter for event capturing
+    //this called event capturing
+    // it work like up to buttom(when you click on lizard fist console.log clicked inside the ul and then lizard clicked)
+
+    //(3) ------------------ preventDefault()---------------------------------------
+
+    // document.getElementById("pexel").addEventListener('click', function(e){
+    //     e.preventDefault();
+    //     console.log("pexel clicked");
+    // }) // prevent to opern the link
+
+    //----------------------------------------------------------------------------
+
+    document.querySelector("#images").addEventListener(
+      "click",
+      function (e) {
+        // console.log(e.target.parentNode)
+        //  let remove = e.target.parentNode
+        // remove.remove()
+        //remove.parentNode.removeChild(remove);
+
+        console.log(e.target.tagName);
+        if (e.target.tagName === "IMG") {
+          console.log(e.target.id);
+          let remove = e.target.parentNode;
+          remove.remove();
+        }
+      },
+      false
+    );
+  </script>
+</html>

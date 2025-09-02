@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="parent">
+      <button id="child">ckick</button>
+    </div>
+
+    <script>
+      //   Event bubbling is the process where an event starts from the target element (the one the user interacted with) and then bubbles up (propagates) through its ancestors in the DOM hierarchy, all the way up to the document (and eventually window).
+
+    //   document.getElementById("child").addEventListener("click", () => {
+    //     console.log("button clicked");
+    //   });
+
+      document.getElementById("parent").addEventListener("click", () => {
+        console.log("parent div clicked!");
+      });
+
+      document.body.addEventListener("click", () => {
+        console.log("body clicked !");
+      });
+
+        document.getElementById("child").addEventListener("click", () => {
+        console.log("button clicked");
+      });
+    </script>
+  </body>
+</html>
